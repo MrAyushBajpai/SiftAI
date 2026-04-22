@@ -3,6 +3,7 @@
 from fastapi import APIRouter, UploadFile, File
 import os
 from app.services.pdf_service import extract_text_from_pdf
+from app.services.chunk_service import chunk_text
 
 router = APIRouter()
 
@@ -19,8 +20,10 @@ async def upload_pdf(file: UploadFile = File(...)):
 
     text = extract_text_from_pdf(file_path)
 
+    chunks = chunk_text(text)
+
     return {
         "filename": file.filename,
-        "text_preview": text[:500],  # sanity check
-        "length": len(text)
+        "num_chunks": len(chunks),
+        "sample_chunk": chunks[0] if chunks else None
     }
