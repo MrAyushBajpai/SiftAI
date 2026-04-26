@@ -24,12 +24,14 @@ async def query_docs(req: QueryRequest):
     query_embedding = embed_texts([req.query])[0]
     results = store_state.vector_store.search(query_embedding, k=5)
 
-    prompt = build_prompt(req.query, results)
+    # extract only text for prompt
+    chunks_text = [r["text"] for r in results]
 
+    prompt = build_prompt(req.query, chunks_text)
     answer = generate_answer(prompt)
 
     return {
         "query": req.query,
         "answer": answer,
-        "sources": results
+        "sources": results   # structured now
     }
