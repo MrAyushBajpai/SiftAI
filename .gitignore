@@ -1,4 +1,6 @@
-# Python bytecode
+# =========================
+# Python
+# =========================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -9,44 +11,61 @@ venv/
 env/
 ENV/
 
-# Environment variables
+# Env vars
 .env
 .env.*
 
-# FastAPI / Uvicorn
+# Logs
 *.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDEs
-.vscode/
-.idea/
-
-# Uploads (important for your app)
-uploads/
-
-# Python packaging
-build/
-dist/
-*.egg-info/
 
 # Caches
 .pytest_cache/
 .mypy_cache/
 .cache/
 
-# Jupyter (if used later)
-.ipynb_checkpoints/
+# Packaging
+build/
+dist/
+*.egg-info/
 
 # Coverage
 .coverage
 htmlcov/
 
-# SQLite (if you add later)
+# DB
 *.db
 
-# Temporary files
+# Temp
 *.tmp
 *.swp
+
+# =========================
+# FastAPI project
+# =========================
+uploads/
+
+# =========================
+# React / Vite
+# =========================
+node_modules/
+dist/
+.vite/
+*.local
+
+# Vite cache
+node_modules/.vite/
+
+# =========================
+# OS / IDE
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Misc
+# =========================
+*.zip
+*.tar
+*.gz
